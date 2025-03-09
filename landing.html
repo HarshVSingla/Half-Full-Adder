@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Logic Calculators</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #6c5ce7 0%, #a363d9 100%);
+        }
+
+        .nav-bar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-brand {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #2d3436;
+            text-decoration: none;
+            background: linear-gradient(90deg, #6c5ce7, #a363d9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 60px;
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .cards-container {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #6c5ce7 0%, #a363d9 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: white;
+            font-weight: bold;
+        }
+
+        .card h2 {
+            color: #2d3436;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .card p {
+            color: #636e72;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .card-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #6c5ce7 0%, #a363d9 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .card-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5em;
+            }
+
+            .card {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-bar {
+                flex-direction: column;
+                gap: 10px;
+                padding: 1rem;
+            }
+
+            .hero-title {
+                font-size: 2em;
+            }
+
+            .hero-subtitle {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <a href="landing.html" class="nav-brand">Digital Logic</a>
+    </nav>
+
+    <div class="main-content">
+        <div class="hero-section">
+            <h1 class="hero-title">Digital Logic Calculators</h1>
+            <p class="hero-subtitle">Explore and understand binary addition with our interactive half and full adder calculators. Perfect for learning digital logic and circuit design.</p>
+        </div>
+
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-icon">½</div>
+                <h2>Half Adder</h2>
+                <p>Add two binary digits with this simple calculator. Learn about basic binary addition and understand XOR and AND operations in digital circuits.</p>
+                <a href="half.html" class="card-button">Try Half Adder</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">+</div>
+                <h2>Full Adder</h2>
+                <p>Add three binary digits including a carry input. Perfect for understanding more complex binary addition and digital arithmetic circuits.</p>
+                <a href="full.html" class="card-button">Try Full Adder</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

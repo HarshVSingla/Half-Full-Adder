@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Half Adder Explanation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .nav-bar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-brand {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2d3436;
+            text-decoration: none;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .calc-link {
+            color: #2d3436;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .calc-link:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 800px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            color: #2d3436;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            font-weight: 600;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f6f9fc 0%, #f1f4f8 100%);
+            border-radius: 16px;
+        }
+
+        h2 {
+            color: #2d3436;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        p {
+            color: #2d3436;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .truth-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .truth-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .truth-table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #dfe6e9;
+        }
+
+        .truth-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .truth-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 480px) {
+            .nav-bar {
+                flex-direction: column;
+                gap: 10px;
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-brand">Half Adder Explanation</div>
+        <a href="half.html" class="calc-link">Calculator</a>
+    </nav>
+
+    <div class="main-content">
+        <div class="container">
+            <h1>Half Adder Explanation</h1>
+
+            <div class="section">
+                <h2>What is a Half Adder?</h2>
+                <p>A half adder is a digital circuit that performs addition of two single binary digits. It is the basic building block for arithmetic operations in digital electronics and computers.</p>
+            </div>
+
+            <div class="section">
+                <h2>Components and Operations</h2>
+                <p>A half adder consists of two logic gates:</p>
+                <p>1. <strong>XOR Gate:</strong> Calculates the Sum output</p>
+                <p>2. <strong>AND Gate:</strong> Calculates the Carry output</p>
+            </div>
+
+            <div class="section">
+                <h2>Logic Operations</h2>
+                <p><strong>Sum (S):</strong> S = A ⊕ B (XOR operation)</p>
+                <p><strong>Carry (C):</strong> C = A • B (AND operation)</p>
+            </div>
+
+            <div class="section">
+                <h2>Truth Table</h2>
+                <table class="truth-table">
+                    <tr>
+                        <th>Input A</th>
+                        <th>Input B</th>
+                        <th>Sum (S)</th>
+                        <th>Carry (C)</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>Limitations</h2>
+                <p>The half adder can only add two single binary digits. For adding larger numbers, we need a full adder which can also handle a carry input from a previous addition.</p>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="half.html" class="back-button">Back to Calculator</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
