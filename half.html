@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Half Adder Calculator</title>
+    <title>Half Adder Circuit</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -39,10 +39,9 @@
             color: #2d3436;
             text-decoration: none;
             background: linear-gradient(90deg, #667eea, #764ba2);
-            background-clip: text;                     /* Standard property */
-            -webkit-background-clip: text;             /* Webkit for compatibility */
+            background-clip: text;
+            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-
         }
 
         .home-link {
@@ -69,14 +68,15 @@
 
         .container {
             background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
+            padding: 20px;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 600px;
+            max-width: 850px;  /* Increased to better fit the iframe */
             backdrop-filter: blur(10px);
-            transform: translateY(0);
-            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .container:hover {
@@ -104,113 +104,6 @@
             border-radius: 2px;
         }
 
-        .input-section {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .input-group {
-            text-align: center;
-            flex: 1;
-            max-width: 150px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 15px;
-            color: #2d3436;
-            font-weight: 500;
-            font-size: 1.1em;
-            transition: color 0.3s ease;
-        }
-
-        input {
-            width: 100%;
-            padding: 15px;
-            font-size: 1.2em;
-            border: 2px solid #dfe6e9;
-            border-radius: 12px;
-            text-align: center;
-            transition: all 0.3s ease;
-            background: white;
-            color: #2d3436;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-        }
-
-        input::placeholder {
-            color: #b2bec3;
-        }
-
-        .result-section {
-            text-align: center;
-            background: linear-gradient(135deg, #f6f9fc 0%, #f1f4f8 100%);
-            padding: 30px;
-            border-radius: 16px;
-            margin-top: 20px;
-        }
-
-        .result-section h3 {
-            color: #2d3436;
-            margin-bottom: 20px;
-            font-size: 1.3em;
-            font-weight: 500;
-        }
-
-        .result-box {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px 40px;
-            margin: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 12px;
-            font-weight: 500;
-            font-size: 1.1em;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            min-width: 150px;
-        }
-
-        .result-box:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .error {
-            color: #e74c3c;
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.9em;
-            min-height: 20px;
-            font-weight: 500;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .error.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .result-box.updated {
-            animation: pulse 0.3s ease-in-out;
-        }
-
         .explanation-link {
             display: inline-block;
             margin-top: 20px;
@@ -235,34 +128,12 @@
                 padding: 1rem;
             }
 
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-
             .container {
                 padding: 20px;
             }
 
             h1 {
                 font-size: 2em;
-            }
-
-            .input-section {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-
-            .input-group {
-                width: 100%;
-                max-width: 200px;
-            }
-
-            .result-box {
-                width: 100%;
-                margin: 10px 0;
             }
         }
     </style>
@@ -275,103 +146,15 @@
 
     <div class="main-content">
         <div class="container">
-            <h1>Half Adder Calculator</h1>
-            
-            <div class="input-section">
-                <div class="input-group">
-                    <label for="input1">Input A</label>
-                    <input type="text" id="input1" maxlength="1" placeholder="0/1" autocomplete="off">
-                </div>
-                <div class="input-group">
-                    <label for="input2">Input B</label>
-                    <input type="text" id="input2" maxlength="1" placeholder="0/1" autocomplete="off">
-                </div>
-            </div>
-
-            <div class="error" id="error"></div>
-
-            <div class="result-section">
-                <h3>Results</h3>
-                <div class="result-box">
-                    Sum: <span id="sum">0</span>
-                </div>
-                <div class="result-box">
-                    Carry: <span id="carry">0</span>
-                </div>
-            </div>
-
-            <div style="text-align: center;">
-                <a href="half_exp.html" class="explanation-link">See Explanation</a>
-            </div>
+            <h1>Half Adder Circuit</h1>
+            <iframe 
+                src="https://circuitverse.org/simulator/embed/half_adder_circuit-50477c6b-1fe1-4cf8-b4cf-303a516c0bb5" 
+                width="100%" 
+                height="600" 
+                style="border: 1px solid #ccc; border-radius: 10px;">
+            </iframe>
+            <a href="half_exp.html" class="explanation-link">View Explanation</a>
         </div>
     </div>
-
-    <script>
-        function calculateHalfAdder() {
-            const input1 = document.getElementById('input1').value;
-            const input2 = document.getElementById('input2').value;
-            const errorElement = document.getElementById('error');
-            const resultBoxes = document.querySelectorAll('.result-box');
-
-            // Validate inputs
-            if (input1 !== '0' && input1 !== '1' || input2 !== '0' && input2 !== '1') {
-                errorElement.textContent = 'Please enter only 0 or 1 for both inputs';
-                errorElement.classList.add('show');
-                return;
-            }
-
-            errorElement.textContent = '';
-            errorElement.classList.remove('show');
-            
-            // Convert to integers
-            const a = parseInt(input1);
-            const b = parseInt(input2);
-
-            // Calculate Sum (XOR operation)
-            const sum = a ^ b;
-            
-            // Calculate Carry (AND operation)
-            const carry = a & b;
-
-            // Update results with animation
-            resultBoxes.forEach(box => {
-                box.classList.add('updated');
-                setTimeout(() => box.classList.remove('updated'), 300);
-            });
-
-            document.getElementById('sum').textContent = sum;
-            document.getElementById('carry').textContent = carry;
-        }
-
-        // Add event listeners for enter key
-        document.getElementById('input1').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                document.getElementById('input2').focus();
-            }
-        });
-
-        document.getElementById('input2').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                calculateHalfAdder();
-            }
-        });
-
-        // Add input validation for real-time feedback
-        const inputs = document.querySelectorAll('input');
-        inputs.forEach(input => {
-            input.addEventListener('input', function(e) {
-                const value = e.target.value;
-                if (value && value !== '0' && value !== '1') {
-                    e.target.style.borderColor = '#e74c3c';
-                } else {
-                    e.target.style.borderColor = '#dfe6e9';
-                }
-            });
-
-            input.addEventListener('focus', function(e) {
-                e.target.select();
-            });
-        });
-    </script>
 </body>
 </html>
